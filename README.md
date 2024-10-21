@@ -31,8 +31,8 @@
    NEXT_PUBLIC_STRIPE_PRICE_ID=<your-stripe-price-id>
 
    # If using Clerk
-   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your-clerk-publishable-key>
-   CLERK_SECRET_KEY=<your-clerk-secret-key>
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_YWRqdXN0ZWQtbGlvbmVzcy00Ni5jbGVyay5hY2NvdW50cy5kZXYk
+   CLERK_SECRET_KEY=sk_test_NW8cJ3GC6Qzm69lDbIT7fjgqhR0EGlyc565CfBR4vt
    NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
    NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
