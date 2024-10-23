@@ -15,7 +15,7 @@ export default function CorporateCoverage({ currentCoverage = 80, targetCoverage
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-4">
-          Overview of your organization's data governance coverage.
+          Overview of your organization&apos;s data governance coverage.
         </p>
         <div className="flex justify-between mb-2">
           <div>
