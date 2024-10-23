@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Rectangle, XAxis, YAxis, Legend } from "recharts"
 
 import {
   Card,
@@ -17,90 +17,60 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+
+// Updated data for the bar chart with 5 categories and 3 quarters
 const chartData = [
-  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 275, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
+  { category: "Data Quality", Q1: 65, Q2: 75, Q3: 80 },
+  { category: "Data Security", Q1: 70, Q2: 80, Q3: 85 },
+  { category: "Data Integration", Q1: 55, Q2: 60, Q3: 70 },
+  { category: "Data Governance", Q1: 50, Q2: 65, Q3: 75 },
+  { category: "Data Analytics", Q1: 60, Q2: 70, Q3: 80 },
 ]
 
+// Updated chart configuration
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  chrome: {
-    label: "Chrome",
+  Q1: {
+    label: "Q1 2024",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
+  Q2: {
+    label: "Q2 2024",
     color: "hsl(var(--chart-2))",
   },
-  firefox: {
-    label: "Firefox",
+  Q3: {
+    label: "Q3 2024",
     color: "hsl(var(--chart-3))",
-  },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))",
-  },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 
+// Updated main functional component
 export function BarChartComponent() {
   return (
     <Card className="">
       <CardHeader>
-        <CardTitle>Bar Chart - Active</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Data Management Progress</CardTitle>
+        <CardDescription>Q1 - Q3 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="browser"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              tickFormatter={(value) =>
-                chartConfig[value as keyof typeof chartConfig]?.label
-              }
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Bar
-              dataKey="visitors"
-              strokeWidth={2}
-              radius={8}
-              activeIndex={2}
-              activeBar={({ ...props }) => {
-                return (
-                  <Rectangle
-                    {...props}
-                    fillOpacity={0.8}
-                    stroke={props.payload.fill}
-                    strokeDasharray={4}
-                    strokeDashoffset={4}
-                  />
-                )
-              }}
-            />
+          <BarChart width={600} height={300} data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="category" />
+            <YAxis />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Legend />
+            <Bar dataKey="Q1" fill={chartConfig.Q1.color} />
+            <Bar dataKey="Q2" fill={chartConfig.Q2.color} />
+            <Bar dataKey="Q3" fill={chartConfig.Q3.color} />
           </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          Overall improvement of 15% across categories <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Showing progress in data management areas for Q1-Q3 2024
         </div>
       </CardFooter>
     </Card>
