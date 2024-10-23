@@ -12,7 +12,7 @@ export default function MaturityCard() {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-4">
-          View your organization's current data governance maturity level.
+          View your organization&apos;s current data governance maturity level.
         </p>
         <div className="flex justify-between mb-2">
           <div>
